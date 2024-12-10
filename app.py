@@ -5,6 +5,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import StandardScaler
 
+# Define the exchange rate (1 INR = 0.043 AED as of the last update, please check for the current rate)
+exchange_rate_inr_to_aed = 0.043
+
 # Load dataset
 df = pd.read_csv('dataset.csv')
 
@@ -78,10 +81,10 @@ if submit_button:
     # Predict price
     predicted_price = model.predict(input_data)[0]
 
-    # Convert prediction to lakhs if prices were scaled
-    if df['Price'].mean() > 100000:  # Assuming original prices are in rupees
-        st.success(f'The predicted price of the car is: ₹{predicted_price:,.2f}')
-    else:
-        st.success(f'The predicted price of the car is: AED {predicted_price *0.043 / 100000:.2f} Lakhs')
+    # Convert prediction to AED
+    predicted_price_aed = predicted_price * exchange_rate_inr_to_aed
 
-st.caption('Disclaimer: The predictions are based on a statistical model and are for reference purposes only.')
+    # Display the result in AED
+    st.success(f'The predicted price of the car is: AED {predicted_price_aed:,.2f}')
+
+st.caption(f'Disclaimer: The predictions are based on a statistical model and are for reference purposes only. Exchange rate used: 1 INR = {exchange_rate_inr_to_aed} AED')
