@@ -87,4 +87,4 @@ if submit_button:
     # Display the result in AED
     st.success(f'The predicted price of the car is: AED {predicted_price_aed:,.2f}')
 
-st.caption(f'Disclaimer: The predictions are based on a statistical model and are for reference purposes only. Exchange rate used: 1 INR = {exchange_rate_inr_to_aed} AED')
+st.caption(f'Disclaimer: The predictions are based on a statistical model and are for reference purposes only.')
