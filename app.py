@@ -82,6 +82,6 @@ if submit_button:
     if df['Price'].mean() > 100000:  # Assuming original prices are in rupees
         st.success(f'The predicted price of the car is: ₹{predicted_price:,.2f}')
     else:
-        st.success(f'The predicted price of the car is: ₹{predicted_price / 100000:.2f} Lakhs')
+        st.success(f'The predicted price of the car is: AED {predicted_price *0.043 / 100000:.2f} Lakhs')
 
 st.caption('Disclaimer: The predictions are based on a statistical model and are for reference purposes only.')
